@@ -6,7 +6,7 @@ class Ball(Turtle):
         super().__init__()
         self.shape("circle")
         self.color("white")
-        self.speed(1)
+        self.move_speed = 0
         self.penup()
         self.x = 10
         self.y = 10
@@ -16,5 +16,15 @@ class Ball(Turtle):
         new_y = self.ycor() + self.y
         self.goto((new_x, new_y))
 
-    def bounce(self):
+    def bounce_y(self):
         self.y *= -1
+        self.move_speed *= 0.9
+
+    def bounce_x(self):
+        self.x *= -1
+        self.move_speed *= 0.9
+
+    def restart(self):
+        self.goto(0, 0)
+        self.x *= -1
+        self.move_speed = 0.1
